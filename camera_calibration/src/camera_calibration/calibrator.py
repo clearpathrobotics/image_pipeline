@@ -1111,8 +1111,8 @@ class StereoCalibrator(Calibrator):
 
     def do_yaml_save(self, folder_location):
         with open(folder_location + '/left.yaml', 'w') as left_yaml_file, open(folder_location + '/right.yaml', 'w') as right_yaml_file:
-            yaml.dump(self.yaml("/left", self.l), left_yaml_file)
-            yaml.dump(self.yaml("/right", self.r), right_yaml_file)
+            left_yaml_file.write(self.yaml("/left", self.l))
+            right_yaml_file.write(self.yaml("/right", self.r))
 
     def do_tarfile_save(self, tf):
         """ Write images and calibration solution to a tarfile object """
