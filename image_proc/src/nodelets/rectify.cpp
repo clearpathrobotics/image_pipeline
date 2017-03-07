@@ -115,9 +115,9 @@ void RectifyNodelet::imageCb(const sensor_msgs::ImageConstPtr& image_msg,
 {
   // Verify camera is actually calibrated
   if (info_msg->K[0] == 0.0) {
-    NODELET_ERROR_THROTTLE(30, "Rectified topic '%s' requested but camera publishing '%s' "
-                           "is uncalibrated", pub_rect_.getTopic().c_str(),
-                           sub_camera_.getInfoTopic().c_str());
+    NODELET_ERROR_ONCE("Rectified topic '%s' requested but camera publishing '%s' "
+                       "is uncalibrated", pub_rect_.getTopic().c_str(),
+                       sub_camera_.getInfoTopic().c_str());
     return;
   }
 
